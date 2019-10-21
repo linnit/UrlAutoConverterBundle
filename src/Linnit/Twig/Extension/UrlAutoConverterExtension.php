@@ -1,8 +1,11 @@
 <?php
 
-namespace Liip\UrlAutoConverterBundle\Extension;
+namespace Linnit\Twig\Extension;
 
-class UrlAutoConverterTwigExtension extends \Twig_Extension
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
+
+class UrlAutoConverterExtension extends AbstractExtension
 {
     protected $linkClass;
     protected $target;
@@ -13,7 +16,7 @@ class UrlAutoConverterTwigExtension extends \Twig_Extension
 
     public function getName()
     {
-        return 'liip_urlautoconverter';
+        return 'linnit_urlautoconverter';
     }
 
     public function setLinkClass($class)
@@ -40,16 +43,16 @@ class UrlAutoConverterTwigExtension extends \Twig_Extension
 
     public function getFilters()
     {
-        return array(
-            new \Twig_SimpleFilter(
+        return [
+            new TwigFilter(
                 'converturls',
-                array($this, 'autoConvertUrls'),
-                array(
+                [$this, 'autoConvertUrls'],
+                [
                     'pre_escape' => 'html',
-                    'is_safe' => array('html'),
-                )
+                    'is_safe' => ['html'],
+                ]
             ),
-        );
+        ];
     }
 
     /**

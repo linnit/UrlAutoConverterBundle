@@ -1,7 +1,2 @@
-.DS_Store
-.idea
-nbproject/
-phpunit.xml
-vendor/
-composer.phar
+vendor
 composer.lock
