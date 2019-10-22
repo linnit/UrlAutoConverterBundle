@@ -1,11 +1,11 @@
 <?php
 
-namespace Liip\UrlAutoConverterBundle;
+namespace Linnit\UrlAutoConverterBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 // @codeCoverageIgnoreStart
-class LiipUrlAutoConverterBundle extends Bundle
+class UrlAutoConverterBundle extends Bundle
 {
 }
 // @codeCoverageIgnoreEnd

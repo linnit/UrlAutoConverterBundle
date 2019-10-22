@@ -1,21 +1,23 @@
 <?php
 
-namespace Liip\UrlAutoConverterBundle\Tests\Extension;
+namespace Linnit\Tests\Extension;
 
-use Liip\UrlAutoConverterBundle\Extension\UrlAutoConverterTwigExtension;
+use PHPUnit\Framework\TestCase;
+use Linnit\Twig\Extension\UrlAutoConverterExtension;
+use Twig\Node\Node;
 
-class UrlAutoConverterTwigExtensionTest extends \PHPUnit_Framework_TestCase
+class UrlAutoConverterExtensionTest extends TestCase
 {
     public function testGetFilters()
     {
-        $classInstance = new UrlAutoConverterTwigExtension();
+        $classInstance = new UrlAutoConverterExtension();
         $returnArray = $classInstance->getFilters();
 
-        $this->assertIsArray($returnArray);
-        $this->assertNotEmpty($returnArray);
+        self::assertIsArray($returnArray);
+        self::assertNotEmpty($returnArray);
         $filter = reset($returnArray);
-        $this->assertInstanceOf('Twig_SimpleFilter', $filter);
-        $this->assertEquals(array('html'), $filter->getSafe(new \Twig_Node()));
+        // self::assertInstanceOf('Twig_SimpleFilter', $filter);
+        self::assertEquals(array('html'), $filter->getSafe(new Node()));
     }
 
     public function provider()
@@ -146,13 +148,13 @@ class UrlAutoConverterTwigExtensionTest extends \PHPUnit_Framework_TestCase
      */
     public function testAutoConvertUrls($a, $b)
     {
-        $classInstance = new UrlAutoConverterTwigExtension();
+        $classInstance = new UrlAutoConverterExtension();
 
         $this->assertEquals($a, $classInstance->autoconverturls($b));
     }
 
-    private function assertIsArray($test)
+    public static function assertIsArray($test, string $message = ''): void
     {
-        $this->assertTrue(is_array($test));
+        self::assertTrue(is_array($test));
     }
 }

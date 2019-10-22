@@ -1,13 +1,13 @@
 <?php
 
-namespace Liip\UrlAutoConverterBundle\DependencyInjection;
+namespace Linnit\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\Config\FileLocator;
 
-class LiipUrlAutoConverterExtension extends Extension
+class UrlAutoConverterExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
@@ -18,7 +18,7 @@ class LiipUrlAutoConverterExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         foreach ($config as $key => $value) {
-            $container->setParameter(sprintf('liip_url_auto_converter.%s', $key), $value);
+            $container->setParameter(sprintf('linnit_url_auto_converter.%s', $key), $value);
         }
     }
 }
